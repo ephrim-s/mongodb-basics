@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect('mongodb+srv://ephrims5:CLWcAzeVXvxwuiRm@cluster0.kfdwj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb+srv://ephrims5:BGgtECVWIk6ZnyiH@cluster0.kfdwj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 .then(()=>console.log('database connected successfully'))
 .catch(e=> console.log(e));
 //
@@ -20,16 +20,31 @@ const User = mongoose.model('User', userSchema);
 
 async function runQueryExamples(){
   try{
-    //create a new document
-    const newUser = await User.create({
+    //create a new document (step 1)
+/*    const newUser = await User.create({
       name: 'Samuel',
       email: 'ephrims@gmail.com',
       age: 35,
       isActive: true,
       tags: ['Developer', 'Designer']
   });
+*/
+  //create a new document (step 2)
+ /* 
+ const newUser = new User({
+    name: 'lawrence',
+    email: 'lawrence@gmail.com',
+    age: 35,
+    isActive: true,
+    tags: ['Developer', 'Designer']
+});
 
-  console.log('Created new user', newUser);
+await newUser.save();
+*/
+  // console.log('Created new user', newUser);
+
+  const allUsers = await User.find({});
+  console.log(allUsers);
 
   }catch(e){
     console.log('Error ->', e)
